@@ -1,0 +1,21 @@
+using UnityEngine;
+using System.Collections;
+
+public class BridgeControl2 : MonoBehaviour {
+	// Use this for initialization
+	void Start () {
+		StartCoroutine(Init());
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	}
+	
+	IEnumerator Init()
+	{
+		GetComponent<Renderer>().enabled = false;
+		yield return new WaitForSeconds(2.0f);
+		GetComponent<NavMeshObstacle>().enabled = false;
+		GetComponent<Renderer>().enabled = true;
+	}
+}
