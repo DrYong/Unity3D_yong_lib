@@ -1,0 +1,22 @@
+using UnityEngine;
+using System.Collections;
+
+public class BallCamera : MonoBehaviour
+{
+    //žúËæµÄÄ¿±êÎïÌå
+    public Transform target;
+    //ÓëÄ¿±êÎïÌåµÄÏà¶Ôžß¶È
+    public float relativeHeigth = 10.0f;
+    //ÓëÄ¿±êÎïÌåµÄÏà¶Ôžß¶È
+    public float zDistance = 5.0f;
+    //×èÄáËÙ¶È
+    public float dampSpeed = 2;
+
+    void Update()
+    {
+
+        Vector3 newPos = target.position + new Vector3(0, relativeHeigth, -zDistance);
+        //Ïñµ¯»ÉÒ»ÑùžúËæÄ¿±êÎïÌå
+        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * dampSpeed);
+    }
+}
