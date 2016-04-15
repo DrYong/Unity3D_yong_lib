@@ -1,0 +1,30 @@
+using UnityEngine;
+using System.Collections;
+
+public class BridgeControl : MonoBehaviour {
+	
+	public Transform movable = null;
+	private float timer = 0.0f;
+	
+	// Use this for initialization
+	void Start () {
+		if (movable != null) 
+		{
+			movable.GetComponent<NavMeshAgent>().areaMask &= ~0x8;
+			GetComponent<Renderer>().enabled = false;
+		}
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (GetComponent<Renderer>().enabled == false) 
+		{
+			timer += Time.deltaTime;
+			if (timer > 2.0f) 
+			{
+                movable.GetComponent<NavMeshAgent>().areaMask |= 0x8;
+				GetComponent<Renderer>().enabled = true;
+			}
+		}
+	}
+}
