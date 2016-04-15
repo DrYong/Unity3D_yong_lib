@@ -1,0 +1,34 @@
+using UnityEngine;
+using System.Collections;
+public class BallControl : MonoBehaviour
+{
+    public float movementSpeed = 6.0f;//小球运动的速率
+    private Vector3 horizontalMovement;//小球的水平运动
+    //这里理解为小球的前后运动
+    private Vector3 verticalMovement;
+    void Update()
+    {
+        horizontalMovement = Input.GetAxis("Horizontal") * Vector3.right * movementSpeed;
+        verticalMovement = Input.GetAxis("Vertical") * Vector3.forward * movementSpeed;
+        //小球的运动（水平运动与前后运动的向量和）
+        Vector3 movement = horizontalMovement + verticalMovement;
+        //为小球施加力
+        GetComponent<Rigidbody>().AddForce(movement, ForceMode.Force);
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        //判断小球是否与钻石对象碰撞
+        if (other.tag == "Pickup")
+        {
+            //如果碰撞了，说明找到了钻石
+           // MarbleGameManager.SP.FoundGem();
+			CrazyBallManager.CB.FoundGem();
+            //销毁对象
+            Destroy(other.gameObject);
+        }
+        else
+        {
+            //与其他对象的碰撞
+        }
+    }
+}
