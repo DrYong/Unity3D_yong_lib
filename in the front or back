@@ -1,0 +1,31 @@
+using UnityEngine;
+using System.Collections;
+
+public class BackOrFront : MonoBehaviour
+{
+    public Transform cam;
+    Vector3 cameraRelative;
+    // Use this for initialization
+    void Start() {
+        cam = Camera.main.transform;
+        cameraRelative = cam.InverseTransformPoint(transform.position);
+
+
+        if (cameraRelative.z > 0)
+        {
+            print("the object is in front of the camera");
+        }
+        else {
+            print("the object is in the back of the camera");
+        }
+
+
+
+	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+}
