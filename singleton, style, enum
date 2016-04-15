@@ -1,0 +1,50 @@
+using UnityEngine;
+using System.Collections;
+
+
+public enum CrazyBallState { playing, won, lost };
+
+
+public class CrazyBallManager : MonoBehaviour
+{
+    //单例模式
+    public static CrazyBallManager cb;
+
+    //供选择样式
+    public GUIStyle buttonStyle;
+    public GUIStyle labelStyle;
+
+    //enum使用
+    private CrazyBallState state;
+
+
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+
+    private int foundGems;
+    //使用样式
+    void OnGUI()
+    {
+        GUI.skin.label = labelStyle;
+        GUI.skin.button = buttonStyle;
+        GUILayout.Label("found gems=" + foundGems);
+
+    }
+
+
+
+
+
+
+}
