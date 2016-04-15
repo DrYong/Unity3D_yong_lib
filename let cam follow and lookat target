@@ -1,0 +1,17 @@
+using UnityEngine;
+using System.Collections;
+
+public class Ttt : MonoBehaviour {
+    public Transform target;
+	// Use this for initialization
+	void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        
+        transform.position = Vector3.Lerp(transform.position, target.TransformPoint(  - 3 * Vector3.forward  + 1* Vector3.up),0.01f);
+        transform.LookAt(target);
+	}
+}
