@@ -1,0 +1,23 @@
+using UnityEngine;
+using System.Collections;
+
+public class ccc : MonoBehaviour {
+    
+    //Coroutines are excellent when modelling behaviour over several frames. 
+
+    // The yield return value specifies when the coroutine is resumed. 
+    
+    //StartCoroutine function always returns immediately, however you can yield the result.This will wait until the coroutine has finished execution.
+    //such as : yield return  StartCoroutine(WaitAndPrint());
+    void Start()
+    {
+        print("Starting " + Time.time);
+        StartCoroutine(WaitAndPrint(2.0F));
+        print("Before WaitAndPrint Finishes " + Time.time);
+    }
+    IEnumerator WaitAndPrint(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        print("WaitAndPrint " + Time.time);
+    }
+}
