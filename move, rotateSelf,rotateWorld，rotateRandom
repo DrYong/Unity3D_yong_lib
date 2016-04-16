@@ -1,0 +1,32 @@
+    void moveToForwardOfSelf() {
+        float speed = 2.0f;
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+    }
+
+
+    void rotateSelf() {
+        float speed = 30f;
+        transform.Rotate(Vector3.up * Time.deltaTime * speed);
+    }
+    
+    
+    
+        public Transform center;
+    void rotateWorld()
+    {
+        float speed = 30f;
+        transform.RotateAround(center.position,Vector3.up, speed * Time.deltaTime * speed);
+    }
+
+
+    void rotateRandom() {
+        Vector3 vec = Random.rotationUniform.eulerAngles;
+        transform.Rotate(vec);
+    }
+    
+    
+    
+    
+    
+    
+    
