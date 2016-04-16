@@ -1,0 +1,18 @@
+using UnityEngine;
+using System.Collections;
+
+public class rotateWithMouseMove : MonoBehaviour {
+
+	// Use this for initialization
+	void Start () {
+	
+	}
+    public float hspeed = 6f;
+    public float vspeed = 6f;
+	// Update is called once per frame
+	void Update () {
+        float h = hspeed * Input.GetAxis("Mouse X");
+        float v = vspeed * Input.GetAxis("Mouse Y");
+        transform.Rotate(v,h,0);
+	}
+}
