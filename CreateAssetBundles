@@ -1,0 +1,22 @@
+using UnityEditor;
+
+public class CreateAssetBundles
+{
+    [MenuItem("Assets/Build Asset Bundles")]
+    static void DoCreateAssetBundles()
+    {
+        // Create the array of bundle build details.
+        AssetBundleBuild[] buildMap = new AssetBundleBuild[2];
+
+        buildMap[0].assetBundleName = "EnemyBundle";
+        string[] enemyAssets = new[] { "EnemyAlienShip", "EnemyAlienShipDamaged" };
+        buildMap[0].assetNames = enemyAssets;
+
+        buildMap[1].assetBundleName = "HeroBundle";
+        string[] heroAssets = new[] { "HeroShip", "HeroShipDamaged" };
+        buildMap[1].assetNames = heroAssets;
+
+        // Put the bundles in a folder called "AssetBundles" within the Assets folder.
+        BuildPipeline.BuildAssetBundles("Assets/AssetBundles", buildMap, BuildAssetBundleOptions.None, BuildTarget.Android);
+    }
+}
