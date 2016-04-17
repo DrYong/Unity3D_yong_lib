@@ -1,0 +1,38 @@
+using UnityEditor;
+using UnityEditor;
+using UnityEngine;
+
+public class CreateAssetBundles
+{
+    [MenuItem("Assets/Build AssetBundles")]
+    static void BuildAllAssetBundles()
+    {
+        BuildPipeline.BuildAssetBundles("Assets/AssetBundles");
+    }
+}
+
+
+
+
+public class GetAssetBundleNames
+{
+    [MenuItem ("Assets/Get AssetBundle names")]
+    static void GetNames ()
+    {
+        var names = AssetDatabase.GetAllAssetBundleNames();
+        foreach (var name in names)
+            Debug.Log ("AssetBundle: " + name);
+    }
+}
+
+
+
+public class CreateAssetBundles
+{
+    [MenuItem("Assets/Build Asset Bundles")]
+    static void DoCreateAssetBundles()
+    {
+        // Put the bundles in a folder called "AssetBundles" within the Assets folder.
+        BuildPipeline.BuildAssetBundles("Assets/AssetBundles", BuildAssetBundleOptions.None, BuildTarget.Android);
+    }
+}
