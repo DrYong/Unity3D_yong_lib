@@ -36,6 +36,18 @@ public class WriteAnRead : MonoBehaviour
 
 
 /*
+    unity3d提供了一个用于本地持久化保存与读取的类——PlayerPrefs。
+    工作原理非常简单，以键值对的形式将数据保存在文件中，然后程序可以根据这个名称取出上次保存的数值。
+    PlayerPrefs类支持3中数据类型的保存和读取，浮点型，整形，和字符串型。
+    分别对应的函数为：
+    SetInt();保存整型数据；
+    GetInt();读取整形数据；
+    SetFloat();保存浮点型数据；
+    GetFlost();读取浮点型数据；
+    SetString();保存字符串型数据；
+    GetString();读取字符串型数据；
+
+
 在PlayerPrefs 类中还提供了
 PlayerPrefs.DeleteKey (key : string)删除指定数据；
 PlayerPrefs.DeleteAll() 删除全部键 ;
