@@ -33,3 +33,12 @@ public class WriteAnRead : MonoBehaviour
     }
 
 }
+
+
+/*
+在PlayerPrefs 类中还提供了
+PlayerPrefs.DeleteKey (key : string)删除指定数据；
+PlayerPrefs.DeleteAll() 删除全部键 ;
+PlayerPrefs.HasKey (key : string)判断数据是否存在的方法；
+等
+*/
