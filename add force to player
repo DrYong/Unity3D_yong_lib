@@ -38,8 +38,6 @@ public class BallControl : MonoBehaviour
 
 /*
 //滚动的小球，要调整up方向
-using UnityEngine;
-using System.Collections;
 public class BallControl : MonoBehaviour
 {
     public float movementSpeed = 6.0f;//小球运动的速率
@@ -54,7 +52,7 @@ public class BallControl : MonoBehaviour
     void Update()
     {
         Vector3 dirTemp = transform.position - playerPositionPre;
-        if (dirTemp != Vector3.zero) {
+        if (Mathf.Abs(dirTemp.z) > 0.01) {
             dir = dirTemp;
             playerPositionPre = transform.position;
             
