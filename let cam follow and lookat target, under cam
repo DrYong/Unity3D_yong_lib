@@ -32,38 +32,49 @@ public class ThirdPersonCamera : MonoBehaviour
 
 /*
 //滚动的小球，要调整up方向
-using UnityEngine;
-using System.Collections;
-public class BallControl : MonoBehaviour
+
+public class followCamera : MonoBehaviour
 {
-    public float movementSpeed = 6.0f;//小球运动的速率
-    private Vector3 horizontalMovement;//小球的水平运动
-    //这里理解为小球的前后运动
-    private Vector3 verticalMovement;
+    public float distanceAway;			// distance from the back of the craft
+    public float distanceUp;			// distance above the craft
+    public float smooth;				// how smooth the camera movement is
 
+    private GameObject hovercraft;		// to store the hovercraft
+    private Vector3 targetPosition;		// the position the camera is trying to be in
     private Vector3 playerPositionPre;
-    private Vector3 dir;
-    Vector3 movement;
+    Vector3 dir;
+    Transform follow;
 
-    void Update()
+    void Start()
     {
-        Vector3 dirTemp = transform.position - playerPositionPre;
-        if (dirTemp != Vector3.zero) {
-            dir = dirTemp;
-            playerPositionPre = transform.position;
-            
+        follow = GameObject.FindWithTag("Player").transform;
+    }
+
+    void LateUpdate()
+    {
+        dir = follow.position - playerPositionPre;
+        //if(dir.x > 0) return;
+        if (Mathf.Abs(dir.z) > 0.001)
+        {
+
+            playerPositionPre = follow.position;
         }
 
-        horizontalMovement = Input.GetAxis("Horizontal") * Vector3.right * movementSpeed;
-        verticalMovement = Input.GetAxis("Vertical") * Vector3.forward * movementSpeed;
-        //小球的运动（水平运动与前后运动的向量和）
 
-        movement = Quaternion.LookRotation(dir) * (horizontalMovement + verticalMovement) ; 
-        
-        //为小球施加力
-        GetComponent<Rigidbody>().AddForce(movement, ForceMode.Force);
+
+        // setting the target position to be the correct offset from the hovercraft
+        targetPosition = follow.position + Vector3.up * distanceUp - dir.normalized * distanceAway;
+
+
+        // making a smooth transition between it's current position and the position it wants to be in
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * smooth);
+
+        // make sure the camera is looking the right way!
+        transform.LookAt(follow);
     }
-    }
+}
+
+
 */
 
 
