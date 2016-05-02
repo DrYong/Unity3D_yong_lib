@@ -1,0 +1,10 @@
+using UnityStandardAssets.CrossPlatformInput;
+//if not work, put a eventSystem in scene
+
+    private Vector3 horizontalMovement;
+     private Vector3 verticalMovement;
+     
+     
+     
+        horizontalMovement = CrossPlatformInputManager.GetAxis("Horizontal") * Vector3.right * movementSpeed;
+        verticalMovement = CrossPlatformInputManager.GetAxis("Vertical") * Vector3.forward * movementSpeed;
