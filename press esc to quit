@@ -1,0 +1,65 @@
+using UnityEngine;
+using System.Collections;
+
+public class eee : MonoBehaviour
+{
+    public GUIStyle labelStyle;
+    float doubleClickStart = 0;
+    float doubleClickTime = 2;//间隔两秒
+
+
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        OnDoubleClickQuit();
+    }
+
+
+
+
+    bool go = false;
+
+
+
+    private void OnDoubleClickQuit()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if ((Time.time - doubleClickStart) > doubleClickTime)//
+            {
+                doubleClickStart = Time.time;
+                go = true;
+
+            }
+            else
+            {
+                Application.Quit();
+            }
+        }
+        else
+        {
+            if ((Time.time - doubleClickStart) > doubleClickTime)
+                go = false;
+        }
+    }
+
+
+
+    public void OnGUI()
+    {
+        GUI.skin.label = labelStyle;
+        if (go)
+            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 30, 200, 60), "再按一次退出");
+
+    }
+
+
+
+}
