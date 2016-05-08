@@ -40,7 +40,7 @@ public class PlayerController : NetworkBehaviour
     // This [Command] code is called on the Client …
     // … but it is run on the Server!
     [Command]
-    void CmdFire()
+    void CmdFire()    // 必须cmd前缀
     {
         // Create the Bullet from the Bullet Prefab
         var bullet = (GameObject)Instantiate(
