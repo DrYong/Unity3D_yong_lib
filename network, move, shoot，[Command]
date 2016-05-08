@@ -1,4 +1,6 @@
 /*
+Commands can only be sent from YOUR player object, so you cannot control the objects of other players
+
  Bullet prefab needs :
  * a NetworkIdentity to identify it as unique on the network,
  * a NetworkTransform to sync the position and rotation of the bullet, 
@@ -40,7 +42,7 @@ public class PlayerController : NetworkBehaviour
     // This [Command] code is called on the Client …
     // … but it is run on the Server!
     [Command]
-    void CmdFire()    // 必须cmd前缀
+    void CmdFire()    // 必须cmd前缀===================
     {
         // Create the Bullet from the Bullet Prefab
         var bullet = (GameObject)Instantiate(
